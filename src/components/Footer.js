@@ -1,5 +1,4 @@
-import { Card, Heading, CardHeader, Button, CardBody, SimpleGrid, Box,
-    Container, CardFooter, Divider, Image, HStack, Stack, Text, VStack, IconButton } from "@chakra-ui/react"
+import { Heading, SimpleGrid, Box, Container, Image, HStack, Stack, Text } from "@chakra-ui/react"
 import Facebook from '../img/facebook.svg'
 import Instagram from '../img/instagram.svg'
 import Reddit from '../img/reddit.svg'

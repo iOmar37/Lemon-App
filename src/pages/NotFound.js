@@ -1,4 +1,4 @@
-import { Spinner, Container, Box, Heading, Spacer } from "@chakra-ui/react";
+import { Spinner, Container, Box, Heading } from "@chakra-ui/react";
 
 export default function NotFound() {
     return (

@@ -1,5 +1,4 @@
-import { Spinner, Container, Box, Heading, Spacer, Alert, AlertIcon, AlertTitle,
-    AlertDescription } from "@chakra-ui/react";
+import { Container, Box, Alert, AlertIcon, AlertTitle, AlertDescription } from "@chakra-ui/react";
 
 export default function Done() {
     return (

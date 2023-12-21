@@ -1,4 +1,4 @@
-import { Flex, Heading, Spacer, Button, ButtonGroup, Box, Image, HStack, Container, Divider } from "@chakra-ui/react"
+import { Flex, Spacer, Button, ButtonGroup, Box, Image, HStack, Container, Divider } from "@chakra-ui/react"
 import logo from '../img/logo.png'
 import { Link } from '@chakra-ui/react'
 import './Navbar.css'

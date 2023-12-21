@@ -1,12 +1,9 @@
-import { Box, Container, Heading, Stack, Text,Button, ButtonGroup, 
-  color, VStack, HStack, SimpleGrid, Card, CardHeader, 
-  CardBody, CardFooter, Image, Divider, Icon } from "@chakra-ui/react";
+import { Box, Container, Heading, Stack, Text,Button, HStack, SimpleGrid, Card, CardBody, CardFooter, Image, Divider} from "@chakra-ui/react";
 import Deliveryicon from "../img/deliveryicon.png";
 import Bruschetta  from "../img/bruschetta.jpg";
 import GreekSalad from "../img/greek-salad.jpg";
 import LemonDessert from "../img/lemon-dessert.jpg";
 import restaurantFoodImage from '../img/restaurant-food.jpg';
-import Bookings from "../pages/Bookings";
 import "./Hero.css";
 import { Link } from '@chakra-ui/react'
 

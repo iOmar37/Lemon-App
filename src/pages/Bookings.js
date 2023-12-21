@@ -1,5 +1,5 @@
-import { Container, SimpleGrid, Box, Card, Image, CardBody, Stack, Heading,
-        Text, Divider, Link, Button, CardFooter, FormControl, Input, FormLabel,
+import { Container, SimpleGrid, Box, Card, CardBody, Stack, Heading,
+        Link, Button, CardFooter, FormControl, Input, FormLabel,
         FormHelperText, FormErrorMessage, Spacer, NumberInput, NumberInputField,
         NumberInputStepper, NumberIncrementStepper, NumberDecrementStepper, Select,
         RadioGroup, HStack, Radio } from "@chakra-ui/react";
