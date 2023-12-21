@@ -1,10 +1,6 @@
 import { Box, Container, Heading, Stack, Text,Button, ButtonGroup, 
   color, VStack, HStack, SimpleGrid, Card, CardHeader, 
   CardBody, CardFooter, Image, Divider, Icon } from "@chakra-ui/react";
-import Customer1  from "../img/customer1.jpg";
-import Customer2  from "../img/customer2.jpg";
-import Customer3  from "../img/customer3.jpg";
-import Customer4  from "../img/customer4.jpg";
 import Deliveryicon from "../img/deliveryicon.png";
 import Bruschetta  from "../img/bruschetta.jpg";
 import GreekSalad from "../img/greek-salad.jpg";
