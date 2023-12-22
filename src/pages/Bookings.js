@@ -98,7 +98,7 @@ export default function Bookings() {
                     
                     <CardFooter justifyContent={"center"}>
                     <Link href='/done' >
-                        <Button w={"150px"} variant='outline' colorScheme="#495E57" color={"green.800"}
+                        <Button w={"250px"} variant='outline' colorScheme="#495E57" color={"green.800"}
                         _hover={{
                         bg:"yellow.300" }}>
                         Confirm

@@ -17,7 +17,7 @@ export default function Done() {
                 >
                 <AlertIcon boxSize='40px' mr={0} />
                 <AlertTitle mt={4} mb={1} fontSize='lg'>
-                    Application submitted!
+                    Reservation submitted!
                 </AlertTitle>
                 <AlertDescription maxWidth='sm'>
                     Thanks for submitting your Booking Information. Our team will take care of your booking.
