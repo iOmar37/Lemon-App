@@ -1,113 +1,134 @@
-import { Container, SimpleGrid, Box, Card, CardBody, Stack, Heading,
-        Link, Button, CardFooter, FormControl, Input, FormLabel,
-        FormHelperText, FormErrorMessage, Spacer, NumberInput, NumberInputField,
-        NumberInputStepper, NumberIncrementStepper, NumberDecrementStepper, Select,
-        RadioGroup, HStack, Radio } from "@chakra-ui/react";
-import { useState } from "react";
-
-        
+import { Card, CardBody, Heading, Container, FormControl, FormLabel, Input, Stack, FormHelperText,
+        NumberInput, NumberInputField, NumberInputStepper, NumberIncrementStepper,
+        NumberDecrementStepper, Select, RadioGroup, HStack, Radio, Button, FormErrorMessage } from '@chakra-ui/react'
+import { useFormik } from 'formik';
+import { Form } from 'react-router-dom';
+import * as Yup from 'yup'
 
 export default function Bookings() {
 
-    const [input, setInput] = useState('')
-
-        const handleInputChange = (e) => setInput(e.target.value)
-
-        const isError = input === ''
+    const formik = useFormik({
+        initialValues: {
+            username: '',
+            email: '',
+            Date: '',
+        },
+        validationSchema: Yup.object({
+            username: Yup.string()
+                .required("Username requird")
+                .min(4, " Username is too short"),
+            email: Yup.string()
+                .email("Invalid email")
+                .required("email required"),
+        }),
+        onSubmit:(values , actions) => {
+            alert (JSON.stringify(values, null , 2 ));
+            actions.resetForm();
+            
+        },
+    });
+    
+    console.log('Booking information', formik.values)
 
     return(
-        <Container centerContent  mt={"100"}>
-             <SimpleGrid templateColumns='repeat(auto-fill, minmax(400px, 1fr))' >
+        <Container centerContent mt={100} >
+            <Card bg={"#EDF2F7"}>
+                <CardBody >
+                    <Stack  spacing="5" >
+                        <Form onSubmit={formik.handleSubmit}>
+                            <Heading>Booking Information</Heading>
 
-                <Box borderRadius={"lg"} boxShadow='base'>
-                <Card maxW='lg' background={"gray.50"}>
-                    <CardBody>
-                    <Stack mt='4' spacing='4'>
-                        <Heading size='md'>Booking Information</Heading>
-                        <Spacer/>
 
-                        <FormControl isRequired>
-                            <FormLabel>First name</FormLabel>
-                            <Input placeholder='First name' />
+                            <FormControl isInvalid={formik.errors.username && formik.touched.username}>
+                                    <FormLabel>First Name</FormLabel>
+                                    <Input 
+                                        bg={"white"}
+                                        name='username' 
+                                        onChange={formik.handleChange} 
+                                        value={formik.values.username} 
+                                        placeholder='Enter username...'
+                                        onBlur={formik.handleBlur}/>
+                                        <FormErrorMessage>{formik.errors.username}</FormErrorMessage>
                             </FormControl>
-                            <Spacer/>
+                                
 
-                            <FormControl isInvalid={isError}>
-                            <FormLabel>Email</FormLabel>
-                            <Input type='email' value={input} onChange={handleInputChange} />
-                            {!isError ? (
-                                <FormHelperText>
-                                Reservation details will be sent to this Email.
-
-                                </FormHelperText>
-                            ) : (
-                                <FormErrorMessage>Email is required.</FormErrorMessage>
-                            )}
+                             <FormControl isInvalid={formik.errors.email && formik.touched.email}>
+                                    <FormLabel>Email address</FormLabel>
+                                    <Input 
+                                        bg={"white"}
+                                        name='email'  
+                                        onChange={formik.handleChange} 
+                                        value={formik.values.email} 
+                                        placeholder='Enter email' 
+                                        type='email'
+                                        onBlur={formik.handleBlur}
+                                        />
+                                        <FormErrorMessage>{formik.errors.email}</FormErrorMessage>
+                                    <FormHelperText>We'll never share your email.</FormHelperText>
                             </FormControl>
-                            <Spacer/>
 
                             <FormControl>
-                            <FormLabel>Date and Time</FormLabel>
-                            <Input
-                                placeholder="Select Date and Time"
-                                size="md"
-                                type="datetime-local"
-                                />
-                                </FormControl>
-                                <Spacer/>
-                        
-                            <FormControl>
-                                <FormLabel>Number of People</FormLabel>
-                                <NumberInput max={16} min={1}>
-                                    <NumberInputField placeholder='0'/>
-                                    <NumberInputStepper>
-                                    <NumberIncrementStepper />
-                                    <NumberDecrementStepper />
-                                    </NumberInputStepper>
-                                </NumberInput>
+                                <FormLabel>Date and Time</FormLabel>
+                                <Input
+                                    name='Date'
+                                    onChange={formik.handleChange} 
+                                    value={formik.values.Date} 
+                                    bg={"white"}
+                                    size="md"
+                                    type="datetime-local"
+                                    />
                             </FormControl>
-                            <Spacer/>
+
+                            
+                            <FormControl>
+                                    <FormLabel>Number of People</FormLabel>
+                                    <NumberInput max={16} min={1} bg={"white"}>
+                                        <NumberInputField placeholder='0'/>
+                                        <NumberInputStepper>
+                                        <NumberIncrementStepper />
+                                        <NumberDecrementStepper />
+                                        </NumberInputStepper>
+                                    </NumberInput>
+                            </FormControl>
+                                
 
                             <FormControl>
-                                <FormLabel>Occasion</FormLabel>
-                                <Select placeholder='Select Occasion'>
-                                    <option>Birthday</option>
-                                    <option>Anniversary</option>
-                                    <option>Graduation party</option>
-                                    <option>Friends</option>
-                                    <option>Family</option>
-                                </Select>
+                                    <FormLabel>Occasion</FormLabel>
+                                    <Select placeholder='Select Occasion' bg={"white"}>
+                                        <option>Birthday</option>
+                                        <option>Anniversary</option>
+                                        <option>Graduation party</option>
+                                        <option>Friends</option>
+                                        <option>Family</option>
+                                    </Select>
                             </FormControl>
-                            <Spacer/>
+                                
 
                             <FormControl as='fieldset'>
-                                <FormLabel as='legend'>
-                                    Where do you prefer to sit ?
-                                </FormLabel>
-                                <RadioGroup defaultValue='Itachi'>
-                                    <HStack spacing='24px'>
-                                    <Radio value='Inside'>Inside</Radio>
-                                    <Radio value='Outside'>Outside</Radio>
-                                    </HStack>
-                                </RadioGroup>
-                                <FormHelperText>We'll make it ready</FormHelperText>
+                                    <FormLabel as='legend'>
+                                        Where do you prefer to sit ?
+                                    </FormLabel>
+                                    <RadioGroup defaultValue='Itachi'>
+                                        <HStack spacing='24px'>
+                                        <Radio value='Inside' bg={"white"}>Inside</Radio>
+                                        <Radio value='Outside'bg={"white"}>Outside</Radio>
+                                        </HStack>
+                                    </RadioGroup>
+                                    <FormHelperText>We'll make it ready</FormHelperText>
                             </FormControl>
 
+                                
+                                  <Button 
+                                    type='submit'
+                                    variant='gost' bg={"yellow.300"} color={"#495E57"}
+                                    _hover={{ bg:"green.200", color:"black"}}
+                                    >
+                                    Confirm
+                                </Button>
+                        </Form>
                     </Stack>
-                    </CardBody>
-                    
-                    <CardFooter justifyContent={"center"}>
-                    <Link href='/done' >
-                        <Button w={"250px"} variant='outline' colorScheme="#495E57" color={"green.800"}
-                        _hover={{
-                        bg:"yellow.300" }}>
-                        Confirm
-                        </Button>
-                    </Link>
-                    </CardFooter>
-                </Card>
-                </Box>
-                </SimpleGrid>
+                </CardBody>
+            </Card>
         </Container>
     )
 }
